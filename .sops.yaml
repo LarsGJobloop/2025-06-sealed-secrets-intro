@@ -1,7 +1,7 @@
 keys:
   - &admin age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
   - &user-1 age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
-  - &m age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
+  - &m age10cz03z352u7r702frgwztewvptnyjkt2gm8mpms3wns5jac9nfcqhqcufz
   - &h age17p78e42l64eycpnwsk52x9r2g900cw2euemjs782eckfclfknyjs0nuzl9
 
 creation_rules:

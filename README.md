@@ -15,7 +15,9 @@ Manage encrypted configuration using [sops](https://github.com/getsops/sops) and
 ## Basic Workflow
 
 - **Generate a new key pair**
-
+  > [!IMPORTANT]
+  > Store your `keys.txt` securely and never commit it to Git!
+  
   ```sh
   age-keygen > keys.txt
   ```

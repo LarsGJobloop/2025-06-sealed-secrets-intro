@@ -8,11 +8,13 @@
   age-keygen > keys.txt
   ```
 
-> [!INFO]
-> If you don't have the `keys.txt` in a standard location you can override it using:
-> ```sh
-> SOPS_AGE_KEY_FILE="$(pwd)/keys.txt" sops decrypt --in-place api-tokens
-> ```
+### Override `keys.txt` location
+
+Prefix `sops` commands with an environment variable:
+
+```sh
+SOPS_AGE_KEY_FILE="$(pwd)/keys.txt" sops decrypt --in-place api-tokens
+```
 
 - Encrypt files
 

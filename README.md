@@ -28,5 +28,5 @@
 
 ## References
 
-- [SOPS]()
-- [Age]()
+- [SOPS](https://github.com/getsops/sops)
+- [Age](https://github.com/FiloSottile/age)

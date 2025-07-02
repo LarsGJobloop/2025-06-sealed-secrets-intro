@@ -1,0 +1,15 @@
+keys:
+  - &admin age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
+  - &user-1 age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
+  - &m age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
+  - &h age1zvx0yvm8wzs02h4cpwqd7t9l6z7r74tj7g8u2evjp46yxztzsqwsgr9t96
+
+creation_rules:
+  # Rules for production secrets
+  - path_regex: api-tokens
+    key_groups:
+      - age:
+          - *admin
+          - *user-1
+          - *m
+          - *h

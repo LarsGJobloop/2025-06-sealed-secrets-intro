@@ -41,7 +41,7 @@ Manage encrypted configuration using [sops](https://github.com/getsops/sops) and
 - **Run a command with decrypted content as environment variables**
 
   ```sh
-  sops exec-env <file> 'bash'
+  sops exec-env <file> 'bash -c "printenv; exit"'
   ```
 
 - **Run a command with decrypted file as an argument**

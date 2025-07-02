@@ -13,3 +13,10 @@ creation_rules:
           - *user-1
           - *m
           - *h
+  - path_regex: mariuskrypterer.yaml
+    key_groups:
+      - age:
+          - *admin
+          - *user-1
+          - *m
+          - *h

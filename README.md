@@ -1,40 +1,66 @@
 # Sealed Secrets
 
-## Command
+> [!WARNING]
+> Be careful not to lock yourself out while securing your secrets.
+> [A cautionary story](https://medium.com/@amanat361/shamir-secret-sharing-the-story-of-a-catastrophic-bug-and-the-resilience-of-paypal-2d6104778b77)
 
-- Create a new public/private key pair
+Manage encrypted configuration using [sops](https://github.com/getsops/sops) and [age](https://github.com/FiloSottile/age).
+
+## References
+
+- [sops](https://github.com/getsops/sops): Encrypt/decrypt files
+- [age](https://github.com/FiloSottile/age): Modern encryption tool
+  - [age-keygen](https://github.com/FiloSottile/age): Key pair generation
+
+## Basic Workflow
+
+- **Generate a new key pair**
 
   ```sh
   age-keygen > keys.txt
   ```
 
-### Override `keys.txt` location ([standard locations](https://github.com/getsops/sops?tab=readme-ov-file#23encrypting-using-age))
+  > If `keys.txt` isn’t in a [standard location](https://github.com/getsops/sops?tab=readme-ov-file#23encrypting-using-age), prefix commands:
+  >
+  > ```sh
+  > SOPS_AGE_KEY_FILE="$(pwd)/keys.txt" sops decrypt --in-place my-secrets.yaml
+  > ```
 
-Prefix `sops` commands with an environment variable:
-
-```sh
-SOPS_AGE_KEY_FILE="$(pwd)/keys.txt" sops decrypt --in-place api-tokens
-```
-
-- Encrypt files
+- **Encrypt a file**
 
   ```sh
-  sops encrypt --in-place api-tokens
+  sops encrypt --in-place <file>
   ```
 
-- Decrypt files
+- **Decrypt a file**
 
   ```sh
-  sops decrypt --in-place api-tokens
+  sops decrypt --in-place <file>
   ```
 
-- Execute a command with decrypted file as environment variables
+- **Run a command with decrypted content as environment variables**
 
   ```sh
-  sops exec-env api-tokens 'bash'
+  sops exec-env <file> 'bash'
   ```
 
-## References
+- **Run a command with decrypted file as an argument**
 
-- [SOPS](https://github.com/getsops/sops)
-- [Age](https://github.com/FiloSottile/age)
+  ```sh
+  sops exec-file <file> 'echo "Filepath: {}"'
+  ```
+
+- **Update recipient keys**
+  
+  1. Decrypt with existing key
+  2. Re-encrypt for new recipients
+
+  ```sh
+  sops updatekeys <file>
+  ```
+
+- **Rotate data encryption key**
+
+  ```sh
+  sops rotate <file>
+  ```

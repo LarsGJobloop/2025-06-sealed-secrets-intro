@@ -20,3 +20,10 @@ creation_rules:
           - *user-1
           - *m
           - *h
+  - path_regex: test.yaml
+    key_groups:
+      - age:
+          - *admin
+          - *user-1
+          - *m
+          - *h
